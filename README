@@ -1,5 +1,5 @@
 This README file contains information on the contents of the
-batman layer.
+meta-remote-management layer.
 
 Please see the corresponding sections below for details.
 
@@ -69,7 +69,32 @@ For building the full OS with docker, OSTree and Cockpit, you need the following
     /path/to/yocto/meta-selinux \
 "
 
+Adding new layers can be done by simply adding them and their dependecies (if any) to the list in /build/conf/bblayes.conf. For an example of how this file should look like, please see example-build-files in this directory.
 
-III. Misc
+III. Adding new packages
 ========
 
+Adding new packages can be done in build/local.conf by adding the following line
+
+IMAGE_INSTALL_append=" " 
+
+It can also be done in meta-remote-management/recipes-flybat/images/remote-management-minimal.bb, by adding them to:
+
+IMAGE_INSTALL_append=" openvpn autoconf cronie nano python-smbus python-pip i2c-tools vim gnupg docker cockpit-ws cockpit-dashboard cockpit-bridge cockpit-packages "
+
+The above line lists the packages installed with remote-management-minimal-image.
+
+
+IV. Steps for building the OS distribution.
+
+1. Download the poky repository, morty version:
+
+git clone -m morty git://git.yoctoproject.org/poky
+
+2. Download and make sure you have all the morty versions of the following layers in the poky repository: meta, meta-poky, meta-virtualization, meta-openembedded, meta-raspberrypi, meta-rust, meta-updater, meta-updater-raspberrypi, meta-selinux. You will also need the master version of oe-meta-go (the morty version was not available at the moment when this layer was developed)
+
+3. In the poky directory, that contains all the neccessary layers listed above, you need to run the following command:
+
+$ source oe-init-build-env
+
+This will create a build directory. In the conf directory within the build directory there will be 2 files: local.conf and bblayers.conf. The example-build-files directory in this repo has examples of files used to build images with this layer.
