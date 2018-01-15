@@ -1,0 +1,75 @@
+This README file contains information on the contents of the
+batman layer.
+
+Please see the corresponding sections below for details.
+
+
+Dependencies
+============
+
+This layer depends on:
+
+  URI: git://git.openembedded.org/bitbake
+  branch: master
+
+  URI: git://git.openembedded.org/openembedded-core
+  layers: meta
+  branch: master
+
+  URI: git://git.yoctoproject.org/xxxx
+  layers: xxxx
+  branch: master
+
+
+Patches
+=======
+
+Please submit any patches against the batman layer to the
+xxxx mailing list (xxxx@zzzz.org) and cc: the maintainer:
+
+Maintainer: XXX YYYYYY <xxx.yyyyyy@zzzzz.com>
+
+
+Table of Contents
+=================
+
+  I. Adding the batman layer to your build
+ II. Misc
+
+
+I. Adding the batman layer to your build
+=================================================
+
+--- replace with specific instructions for the batman layer ---
+
+In order to use this layer, you need to make the build system aware of
+it.
+
+Assuming the batman layer exists at the top-level of your
+yocto build tree, you can add it to the build system by adding the
+location of the batman layer to bblayers.conf, along with any
+other layers needed. e.g.:
+
+  BBLAYERS ?= " \
+    /path/to/yocto/meta \
+    /path/to/yocto/meta-poky \
+    /path/to/yocto/meta-remote-management \
+    /path/to/yocto/meta-virtualization \
+    /path/to/yocto/meta-openembedded/meta-oe \
+    /path/to/yocto/meta-openembedded/meta-networking \
+    /path/to/yocto/meta-openembedded/meta-systemd \
+    /path/to/yocto/meta-openembedded/meta-python \
+    /path/to/yocto/meta-openembedded/meta-filesystems \
+    /path/to/yocto/meta-raspberrypi \
+    /path/to/yocto//meta-rust \
+    /path/to/yocto//oe-meta-go \
+    /path/to/yocto/meta-updater \
+    /path/to/yocto//meta-updater-raspberrypi \
+    /path/to/yocto/meta-selinux \
+"
+
+
+II. Misc
+========
+
+--- replace with specific information about the batman layer ---
