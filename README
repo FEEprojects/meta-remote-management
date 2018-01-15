@@ -17,14 +17,8 @@ Patches
 Maintainer: Mihaela Apetroaie-Cristea <apetroaiecristeamihaela@gmail.com>
 
 
-Table of Contents
-=================
 
 I. Adding the remote-management layer to your build
-II. Misc
-===================
-
-II. Adding the remote-management layer to your build
 =================================================
 
 
@@ -54,7 +48,7 @@ For building the full OS with docker, OSTree and Cockpit, you need the following
 Adding new layers can be done by simply adding them and their dependecies (if any) to the list in /build/conf/bblayes.conf. For an example of how this file should look like, please see example-build-files in this directory.
 ======================================
 
-III. Adding new packages
+II. Adding new packages
 ========================
 
 Adding new packages can be done in build/local.conf by adding the following line
@@ -68,7 +62,7 @@ IMAGE_INSTALL_append=" openvpn autoconf cronie nano python-smbus python-pip i2c-
 The above line lists the packages installed with remote-management-minimal-image.
 ========================================
 
-IV. Steps for building the OS distribution.
+III. Steps for building the OS distribution.
 ============================================
 
 1. Download the poky repository, morty version:
@@ -112,7 +106,7 @@ bitbake build remote-management-minimal
 5. Once the build process is done, you can find the image in build/tmp/deploy/images/raspberrypi3/
 ================
 
-V. Other
+IV. Other
 ==========
 
 Once the image is flashed on the SD card, you will need to run the following command in order to get docker running. 
