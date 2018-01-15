@@ -4,6 +4,12 @@ batman layer.
 Please see the corresponding sections below for details.
 
 
+Overview
+============
+
+This is a morty yocto layer that allows building cockpit for raspberry pi and integrating docker and ostree. Please see bellow the bblayers neccessary for building the remote-management-minimal image, that can be found in meta-remote-management/recipes-flybat/images/
+
+
 Dependencies
 ============
 
@@ -24,31 +30,26 @@ This layer depends on:
 Patches
 =======
 
-Please submit any patches against the batman layer to the
-xxxx mailing list (xxxx@zzzz.org) and cc: the maintainer:
 
-Maintainer: XXX YYYYYY <xxx.yyyyyy@zzzzz.com>
+Maintainer: Mihaela Apetroaie-Cristea <apetroaiecristeamihaela@gmail.com>
 
 
 Table of Contents
 =================
 
-  I. Adding the batman layer to your build
- II. Misc
+I. Adding the remote-management layer to your build
+II. Misc
+===================
 
-
-I. Adding the batman layer to your build
+II. Adding the remote-management layer to your build
 =================================================
 
---- replace with specific instructions for the batman layer ---
+
 
 In order to use this layer, you need to make the build system aware of
 it.
 
-Assuming the batman layer exists at the top-level of your
-yocto build tree, you can add it to the build system by adding the
-location of the batman layer to bblayers.conf, along with any
-other layers needed. e.g.:
+For building the full OS with docker, OSTree and Cockpit, you need the following layers:
 
   BBLAYERS ?= " \
     /path/to/yocto/meta \
@@ -69,7 +70,6 @@ other layers needed. e.g.:
 "
 
 
-II. Misc
+III. Misc
 ========
 
---- replace with specific information about the batman layer ---
