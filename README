@@ -98,3 +98,25 @@ git clone -m morty git://git.yoctoproject.org/poky
 $ source oe-init-build-env
 
 This will create a build directory. In the conf directory within the build directory there will be 2 files: local.conf and bblayers.conf. The example-build-files directory in this repo has examples of files used to build images with this layer.
+
+The local.conf file has to contain the following lines:
+
+#allow us building OSTree using the meta-virtualization layer
+DISTRO_FEATURES_append = " sota systemd pam"
+INHERIT += " sota"
+
+
+# tell bitbake to build an image that can be written on an SD card.
+IMAGE_FSTYPE="sdimg"
+
+
+# enable SPI and I2C
+ENABLE_SPI_BUS="1"
+ENABLE_I2C="1"
+ENABLE_SPI="1"
+
+
+# Prelinking increases the size of downloads and causes build errors
+USER_CLASSES_remove = "image-prelink"
+VIRTUAL-RUNTIME_init_manager = "systemd"
+VIRTUAL-RUNTIME_initscripts = "systemd-compat-units"
