@@ -70,9 +70,10 @@ For building the full OS with docker, OSTree and Cockpit, you need the following
 "
 
 Adding new layers can be done by simply adding them and their dependecies (if any) to the list in /build/conf/bblayes.conf. For an example of how this file should look like, please see example-build-files in this directory.
+======================================
 
 III. Adding new packages
-========
+========================
 
 Adding new packages can be done in build/local.conf by adding the following line
 
@@ -83,9 +84,10 @@ It can also be done in meta-remote-management/recipes-flybat/images/remote-manag
 IMAGE_INSTALL_append=" openvpn autoconf cronie nano python-smbus python-pip i2c-tools vim gnupg docker cockpit-ws cockpit-dashboard cockpit-bridge cockpit-packages "
 
 The above line lists the packages installed with remote-management-minimal-image.
-
+========================================
 
 IV. Steps for building the OS distribution.
+============================================
 
 1. Download the poky repository, morty version:
 
@@ -120,3 +122,17 @@ ENABLE_SPI="1"
 USER_CLASSES_remove = "image-prelink"
 VIRTUAL-RUNTIME_init_manager = "systemd"
 VIRTUAL-RUNTIME_initscripts = "systemd-compat-units"
+
+4. To build the image run
+
+$ bitbake build remote-management-minimal
+
+5. Once the build process is done, you can find the image in build/tmp/deploy/images/raspberrypi3/
+================
+
+V. Other
+==========
+
+Once the image is flashed on the SD card, you will need to run the following command in order to get docker running. 
+
+ln -s /lib/ld-linux-armhf.so.3 /lib/ld-linux.so.3
