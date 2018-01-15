@@ -44,7 +44,7 @@ For building the full OS with docker, OSTree and Cockpit, you need the following
     "
 
 Adding new layers can be done by simply adding them and their dependecies (if any) to the list in /build/conf/bblayes.conf. For an example of how this file should look like, please see example-build-files in this directory.
-======================================
+
 
 II. Adding new packages
 ========================
