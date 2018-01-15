@@ -13,9 +13,7 @@ This is a morty yocto layer that allows building cockpit for raspberry pi and in
 Patches
 =======
 
-
 Maintainer: Mihaela Apetroaie-Cristea <apetroaiecristeamihaela@gmail.com>
-
 
 
 I. Adding the remote-management layer to your build
