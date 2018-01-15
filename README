@@ -28,7 +28,6 @@ II. Adding the remote-management layer to your build
 =================================================
 
 
-
 In order to use this layer, you need to make the build system aware of
 it.
 
@@ -80,7 +79,7 @@ git clone -m morty git://git.yoctoproject.org/poky
 
 3. In the poky directory, that contains all the neccessary layers listed above, you need to run the following command:
 
- source oe-init-build-env
+source oe-init-build-env
 
 This will create a build directory. This directory will contain a conf folder that will have 2 files: local.conf and bblayers.conf. The example-build-files directory in this repo has examples of files used to build images with this layer. The easiest way to build an OS distribution based on this layer is to replace the automatically generated files with the ones in this repo.
 
@@ -108,7 +107,7 @@ VIRTUAL-RUNTIME_initscripts = "systemd-compat-units"
 
 4. To build the image run
 
- bitbake build remote-management-minimal
+bitbake build remote-management-minimal
 
 5. Once the build process is done, you can find the image in build/tmp/deploy/images/raspberrypi3/
 ================
