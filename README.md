@@ -106,9 +106,4 @@ You will need to add the following lines to the local.conf file:
 5. Once the build process is done, you can find the image in `build/tmp/deploy/images/raspberrypi3/`
 
 
-IV. Other
-==========
 
-Once the image is flashed on the SD card, you will need to run the following command in order to get docker running. 
-
-    ln -s /lib/ld-linux-armhf.so.3 /lib/ld-linux.so.3
