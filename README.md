@@ -65,7 +65,7 @@ III. Steps for building the OS distribution.
 
 1. Download the poky repository, morty version:
 
-    git clone -m morty git://git.yoctoproject.org/poky
+    git clone -b morty git://git.yoctoproject.org/poky
 
 2. Download and make sure you have all the morty versions of the following layers in the poky repository: meta, meta-poky, meta-virtualization, meta-openembedded, meta-raspberrypi, meta-rust, meta-updater, meta-updater-raspberrypi, meta-selinux. You will also need the master version of oe-meta-go (the morty version was not available at the moment when this layer was developed)
 
