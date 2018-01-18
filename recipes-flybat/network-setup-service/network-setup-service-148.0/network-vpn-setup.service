@@ -1,11 +1,12 @@
 [Unit]
-Description=Ethernet and VPN setup
-After=network.target
+Description=VPN Setup
+After=network.target network-online.target
+Requires=network-online.target
 
 [Service]
 Type=oneshot
 RemainAfterExit=no
-ExecStart=/usr/network-vpn-setup/init.sh
+ExecStart=/usr/network-setup-service/vpninit.sh
 
 [Install]
 WantedBy=multi-user.target

@@ -12,7 +12,8 @@ pkg_postinst_${PN}() {
 #!/bin/sh
 
 if [ -n "$D" ]; then
-    ln -s $D/lib/ld-linux-armhf.so.3 $D/lib/ld-linux.so.3
+    cd $D/lib
+    ln -s ld-linux-armhf.so.3 ld-linux.so.3
     echo "$(date): Script run. Symlink status: $? (0 for success)" >> $D/home/root/fixruntimehack.txt
 else
     exit 0;
