@@ -1,0 +1,71 @@
+From 4009c60aa223a7de64f87be119ef9f4b4c1e1c13 Mon Sep 17 00:00:00 2001
+From: vladvelici <vlad.velici@gmail.com>
+Date: Wed, 16 May 2018 01:04:30 +0100
+Subject: [PATCH] added spi-gpio-cs-overlay.dts
+
+---
+ arch/arm/boot/dts/overlays/Makefile                |  1 +
+ arch/arm/boot/dts/overlays/spi-gpio-cs-overlay.dts | 40 ++++++++++++++++++++++
+ 2 files changed, 41 insertions(+)
+ create mode 100644 arch/arm/boot/dts/overlays/spi-gpio-cs-overlay.dts
+
+diff --git a/arch/arm/boot/dts/overlays/Makefile b/arch/arm/boot/dts/overlays/Makefile
+index 758fc6e..7142cf6 100644
+--- a/arch/arm/boot/dts/overlays/Makefile
++++ b/arch/arm/boot/dts/overlays/Makefile
+@@ -110,6 +110,7 @@ dtbo-$(CONFIG_ARCH_BCM2835) += \
+ 	spi2-1cs.dtbo \
+ 	spi2-2cs.dtbo \
+ 	spi2-3cs.dtbo \
++	spi-gpio-cs.dtbo \
+ 	tinylcd35.dtbo \
+ 	uart1.dtbo \
+ 	vc4-fkms-v3d.dtbo \
+diff --git a/arch/arm/boot/dts/overlays/spi-gpio-cs-overlay.dts b/arch/arm/boot/dts/overlays/spi-gpio-cs-overlay.dts
+new file mode 100644
+index 0000000..68fff2d
+--- /dev/null
++++ b/arch/arm/boot/dts/overlays/spi-gpio-cs-overlay.dts
+@@ -0,0 +1,40 @@
++/dts-v1/;
++/plugin/;
++
++/ {
++   compatible = "brcm,bcm2835", "brcm,bcm2836", "brcm,bcm2708", "brcm,bcm2709";
++
++   fragment@0 {
++      target = <&spi0>;
++      frag0: __overlay__ {
++         #address-cells = <1>;
++         #size-cells = <0>;
++         pinctrl-0 = <&spi0_pins &spi0_cs_pins>;
++         status = "okay";
++         cs-gpios = <0>, <0>, <&gpio 25 1>;
++
++         spidev@2{
++            compatible = "spidev";
++            reg = <2>;   /* CE2 */
++            #address-cells = <1>;
++            #size-cells = <0>;
++            spi-max-frequency = <500000>;
++         };
++      };
++   };
++
++   fragment@1 {
++      target = <&gpio>;
++      __overlay__ {
++         spi0_cs_pins: spi0_cs_pins {
++            brcm,pins = <25>;
++            brcm,function = <1>; /* out */
++         };
++      };
++   };
++
++   __overrides__ {
++      cs2_pin = <&frag0>,"cs-gpios:12", <&spi0_cs_pins>,"brcm,pins:0";
++      cs3_pin = <&frag0>,"cs-gpios:24", <&spi0_cs_pins>,"brcm,pins:4";
++   };
++};
+--
+2.7.4
