@@ -7,7 +7,7 @@ Please see the corresponding sections below for details.
 Overview
 ============
 
-This is a morty yocto layer that allows building cockpit for raspberry pi and integrating docker and ostree. Please see bellow the bblayers neccessary for building the remote-management-minimal image, that can be found in meta-remote-management/recipes-flybat/images/
+This is a rocko yocto layer that allows building cockpit for raspberry pi and integrating docker and ostree. Please see bellow the bblayers neccessary for building the remote-management-minimal image, that can be found in meta-remote-management/recipes-flybat/images/
 
 
 Patches
@@ -51,7 +51,7 @@ II. Adding new packages
 
 Adding new packages can be done in build/local.conf by adding the following line
 
-    IMAGE_INSTALL_append=" " 
+    IMAGE_INSTALL_append=" "
 
 It can also be done in meta-remote-management/recipes-flybat/images/remote-management-minimal.bb, by adding them to:
 
@@ -63,11 +63,11 @@ It can also be done in meta-remote-management/recipes-flybat/images/remote-manag
 III. Steps for building the OS distribution.
 ============================================
 
-1. Download the poky repository, morty version:
+1. Download the poky repository, rocko version:
 
-    git clone -b morty git://git.yoctoproject.org/poky
+    git clone -b rocko git://git.yoctoproject.org/poky
 
-2. Download and make sure you have all the morty versions of the following layers in the poky repository: meta, meta-poky, meta-virtualization, meta-openembedded, meta-raspberrypi, meta-rust, meta-updater, meta-updater-raspberrypi, meta-selinux. You will also need the master version of oe-meta-go (the morty version was not available at the moment when this layer was developed)
+2. Download and make sure you have all the rocko versions of the following layers in the poky repository: meta, meta-poky, meta-virtualization, meta-openembedded, meta-raspberrypi, meta-updater, meta-updater-raspberrypi. You will also need the master version of oe-meta-go (the rocko version was not available at the moment when this layer was developed)
 
 3. In the poky directory, that contains all the neccessary layers listed above, you need to run the following command:
 
@@ -75,35 +75,28 @@ III. Steps for building the OS distribution.
 
 This will create a build directory. This directory will contain a conf folder that will have 2 files: local.conf and bblayers.conf. The example-build-files directory in this repo has examples of files used to build images with this layer. The easiest way to build an OS distribution based on this layer is to replace the automatically generated files with the ones in this repo.
 
-You will need to add the following lines to the local.conf file: 
+Make sure the distro in `local.conf` is set to
 
-    #allow us building OSTree using the meta-virtualization layer
-    DISTRO_FEATURES_append = " sota systemd pam"
-    INHERIT += " sota"
+    DISTRO ?= "remote-management-sota"
 
-## tell bitbake to build an image that can be written on an SD card.
-    
-    IMAGE_FSTYPE="sdimg"
+4. To build the image run
+
+    bitbake build remote-management-minimal
+
+5. Once the build process is done, you can find the image in `build/tmp/deploy/images/raspberrypi3/remote-management-minimal-raspberrypi3.wic`
 
 
-## enable SPI and I2C
 
-    ENABLE_SPI_BUS="1"
-    ENABLE_I2C="1"
-    ENABLE_SPI="1"
+## config.txt notes
 
+u-boot and fitImages (the current setup) don't seem to use the dtparam= and dtoverlay= configs from config.txt.
+
+The whole device tree is in the fitImage (linux kernel image, located on partition 2 of sd card at `/boot/ostree/poky-xxx/vmlinuz`).
+
+SPI and I2C should be enabled by default, this is achieved with a kernel patch that changes the default values.
 
 ## Prelinking increases the size of downloads and causes build errors
 
     USER_CLASSES_remove = "image-prelink"
     VIRTUAL-RUNTIME_init_manager = "systemd"
     VIRTUAL-RUNTIME_initscripts = "systemd-compat-units"
-
-4. To build the image run
-
-    bitbake build remote-management-minimal
-
-5. Once the build process is done, you can find the image in `build/tmp/deploy/images/raspberrypi3/`
-
-
-
