@@ -1,4 +1,3 @@
-This README file contains information on the contents of the
 meta-remote-management layer.
 
 Please see the corresponding sections below for details.
