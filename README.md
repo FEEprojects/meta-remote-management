@@ -13,7 +13,16 @@ Base Install (Requirements)
 ===========================
 The follwoing OS's have been tested, others may work
 
-## Ubuntu 18:04
+## Ubuntu 18:04 
+(Based on https://www.yoctoproject.org/docs/1.8/yocto-project-qs/yocto-project-qs.html)
+
+General required packages:
+sudo apt-get install gawk wget git-core diffstat unzip texinfo 
+sudo apt-get install gcc-multilib build-essential 
+sudo apt-get install chrpath socat libsdl1.2-dev xterm
+
+Get Yocto
+git clone git://git.yoctoproject.org/poky
 
 
 Patches
