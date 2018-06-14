@@ -9,6 +9,13 @@ Overview
 
 This is a morty yocto layer that allows building cockpit for raspberry pi and integrating docker and ostree. Please see bellow the bblayers neccessary for building the remote-management-minimal image, that can be found in meta-remote-management/recipes-flybat/images/
 
+Base Install (Requirements)
+===========================
+The follwoing OS's have been tested, others may work
+
+    Ubuntu 18:04
+    ============
+
 
 Patches
 =======
