@@ -69,13 +69,19 @@ III. Steps for building the OS distribution.
 
 2. Download and make sure you have all the rocko versions of the following layers in the poky repository: meta, meta-poky, meta-virtualization, meta-openembedded, meta-raspberrypi, meta-updater, meta-updater-raspberrypi. You will also need the master version of oe-meta-go (the rocko version was not available at the moment when this layer was developed)
 
-cd pocky
-git clone -b rocko git://git.yoctoproject.org/meta-virtualization
-git clone -b rocko git://git.openembedded.org/meta-openembedded
-git clone -b rocko git://git.yoctoproject.org/meta-raspberrypi
-git clone -b rocko https://github.com/advancedtelematic/meta-updater
-git clone -b rocko https://github.com/advancedtelematic/meta-updater-raspberrypi
-git clone -b rocko https://github.com/mem/oe-meta-go.git
+* cd pocky
+
+* git clone -b rocko git://git.yoctoproject.org/meta-virtualization
+
+* git clone -b rocko git://git.openembedded.org/meta-openembedded
+
+* git clone -b rocko git://git.yoctoproject.org/meta-raspberrypi
+
+* git clone -b rocko https://github.com/advancedtelematic/meta-updater
+
+* git clone -b rocko https://github.com/advancedtelematic/meta-updater-raspberrypi
+
+* git clone -b rocko https://github.com/mem/oe-meta-go.git
 
 
 3. In the poky directory, that contains all the neccessary layers listed above, you need to run the following command:
