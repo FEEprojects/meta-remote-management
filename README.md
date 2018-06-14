@@ -69,6 +69,10 @@ III. Steps for building the OS distribution.
 
 2. Download and make sure you have all the rocko versions of the following layers in the poky repository: meta, meta-poky, meta-virtualization, meta-openembedded, meta-raspberrypi, meta-updater, meta-updater-raspberrypi. You will also need the master version of oe-meta-go (the rocko version was not available at the moment when this layer was developed)
 
+* Run script meta-remote-management/other_useful_scripts/quick-setup-deps.sh 
+
+OR 
+
 * cd pocky
 
 * git clone -b rocko git://git.yoctoproject.org/meta-virtualization
@@ -96,7 +100,7 @@ Make sure the distro in `local.conf` is set to
 
 4. To build the image run
 
-    bitbake builder remote-management-minimal
+    bitbake remote-management-minimal
 
 5. Once the build process is done, you can find the image in `build/tmp/deploy/images/raspberrypi3/remote-management-minimal-raspberrypi3.wic`
 
