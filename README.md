@@ -96,7 +96,7 @@ Make sure the distro in `local.conf` is set to
 
 4. To build the image run
 
-    bitbake build remote-management-minimal
+    bitbake builder remote-management-minimal
 
 5. Once the build process is done, you can find the image in `build/tmp/deploy/images/raspberrypi3/remote-management-minimal-raspberrypi3.wic`
 
