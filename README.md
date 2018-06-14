@@ -13,8 +13,7 @@ Base Install (Requirements)
 ===========================
 The follwoing OS's have been tested, others may work
 
-    Ubuntu 18:04
-    ============
+## Ubuntu 18:04
 
 
 Patches
