@@ -1,4 +1,3 @@
-meta-remote-management layer.
 
 Please see the corresponding sections below for details.
 
@@ -7,25 +6,6 @@ Overview
 ============
 
 This is a morty yocto layer that allows building cockpit for raspberry pi and integrating docker and ostree. Please see bellow the bblayers neccessary for building the remote-management-minimal image, that can be found in meta-remote-management/recipes-flybat/images/
-
-Base Install (Requirements)
-===========================
-The follwoing OS's have been tested, others may work
-
-## Ubuntu 18:04 
-(Based on https://www.yoctoproject.org/docs/1.8/yocto-project-qs/yocto-project-qs.html)
-
-General required packages:
-sudo apt-get install gawk wget git-core diffstat unzip texinfo 
-sudo apt-get install gcc-multilib build-essential 
-sudo apt-get install chrpath socat libsdl1.2-dev xterm
-
-Get Yocto:
-git clone git://git.yoctoproject.org/poky
-git clone --bare git://git.yoctoproject.org/linux-yocto-3.19 linux-yocto-3.19.git
-
-My copy
-git clone linux-yocto-3.19.git my-linux-yocto-3.19-work
 
 
 Patches
