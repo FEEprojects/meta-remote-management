@@ -21,8 +21,10 @@ sudo apt-get install gawk wget git-core diffstat unzip texinfo
 sudo apt-get install gcc-multilib build-essential 
 sudo apt-get install chrpath socat libsdl1.2-dev xterm
 
-Get Yocto
+Get Yocto:
 git clone git://git.yoctoproject.org/poky
+git clone --bare git://git.yoctoproject.org/linux-yocto-3.19 linux-yocto-3.19.git
+
 
 
 Patches
