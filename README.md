@@ -25,6 +25,8 @@ Get Yocto:
 git clone git://git.yoctoproject.org/poky
 git clone --bare git://git.yoctoproject.org/linux-yocto-3.19 linux-yocto-3.19.git
 
+My copy
+git clone linux-yocto-3.19.git my-linux-yocto-3.19-work
 
 
 Patches
