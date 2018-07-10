@@ -5,7 +5,7 @@ Please see the corresponding sections below for details.
 Overview
 ============
 
-This is a rocko yocto layer that allows building cockpit for raspberry pi and integrating docker and ostree. Please see bellow the bblayers neccessary for building the remote-management-minimal image, that can be found in meta-remote-management/recipes-flybat/images/
+This is a rocko yocto layer that allows building cockpit for raspberry pi and integrating docker and ostree. Please see bellow the bblayers neccessary for building the remote-management-rpi image, that can be found in meta-remote-management-raspberrypi/recipes-flybat/images/
 
 
 Patches
@@ -38,6 +38,7 @@ For building the full OS with docker, OSTree and Cockpit, you need the following
     /path/to/yocto//oe-meta-go \
     /path/to/yocto/meta-updater \
     /path/to/yocto//meta-updater-raspberrypi \
+    /path/to/yocto//meta-remote-management-raspberrypi \
     /path/to/yocto/meta-selinux \
     "
 
@@ -51,11 +52,11 @@ Adding new packages can be done in build/local.conf by adding the following line
 
     IMAGE_INSTALL_append=" "
 
-It can also be done in meta-remote-management/recipes-flybat/images/remote-management-minimal.bb, by adding them to:
+It can also be done in meta-remote-management-raspberrypi/recipes-flybat/images/remote-management-rpi.bb, by adding them to:
 
     IMAGE_INSTALL_append=" openvpn autoconf cronie nano python-smbus python-pip i2c-tools vim gnupg docker cockpit-ws cockpit-dashboard cockpit-bridge cockpit-packages "
 
-**The above line lists the packages installed with remote-management-minimal-image.**
+**The above line lists the packages installed with remote-management-rpi image.**
 
 
 III. Steps for building the OS distribution.
@@ -94,9 +95,9 @@ Make sure the distro in `local.conf` is set to
 
 4. To build the image run
 
-    bitbake build remote-management-minimal
+    bitbake build remote-management-rpi
 
-5. Once the build process is done, you can find the image in `build/tmp/deploy/images/raspberrypi3/remote-management-minimal-raspberrypi3.wic`
+5. Once the build process is done, you can find the image in `build/tmp/deploy/images/raspberrypi3/remote-management-rpi-raspberrypi3.wic`
 
 
 
