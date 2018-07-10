@@ -1,0 +1,10 @@
+[Unit]
+Description=Ethernet keepalive if disconnected
+After=network.target
+Requires=network.target
+
+[Service]
+ExecStart=/usr/network-setup-service/eth0watch.sh
+
+[Install]
+WantedBy=multi-user.target
