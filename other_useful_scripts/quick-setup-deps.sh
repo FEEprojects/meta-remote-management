@@ -20,3 +20,6 @@ git submodule add -b rocko https://github.com/advancedtelematic/meta-updater-ras
 
 # meta-openembedded
 git submodule add -b rocko https://github.com/openembedded/meta-openembedded.git meta-openembedded
+
+# meta-remote-management-raspberrypi
+git submodule add -b master https://github.com/FEEprojects/meta-remote-management-raspberrypi.git meta-remote-management-raspberrypi
