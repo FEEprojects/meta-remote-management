@@ -1,9 +1,0 @@
-Runtime hack was installed to run at first boot. A confirmation message should
-appear after this message. If it doesn't, something went wrong.
-
-You can fix it by manually running:
-
-ln -s /lib/ld-linux-armhf.so.3 /lib/ld-linux.so.3
-
-
-Success message should appear after this line...:
